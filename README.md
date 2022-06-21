@@ -10,9 +10,12 @@ Web address: http://books.toscrape.com/index.html
 ## 4. How to Install and Run the Project
 
 1. Ensure you have the python intepreter installed on your machine
-2. Download the project from Github to a directory on your computer. Github link : https://github.com/lnnsenga/bookstoscrape.git
-3. Open the project folder in your IDE .( Name of the folder is _bookstoscrape_.)
-4. Install the dependencies of the software by running the following code
+2. Download the project from Github, from the master branch to a directory on your computer. 
+   Github link : https://github.com/lnnsenga/bookstoscrape.git
+3. Change directory to bookstoscrape
+4. Checkout to the master branch  
+5. Open the project folder in your IDE .( Name of the folder is _bookstoscrape_.)
+4. Install the dependencies of the software by running the following code in your terminal
 
 ```console
 pip3 install -r requirements.txt
@@ -45,7 +48,7 @@ scrape_category_page()
 
 You will extract extract the following details for a single book
 
-1. universal\_ product_code (upc)
+1. universal product_code (upc)
 2. title
 3. price_including_tax
 4. price_excluding_tax
