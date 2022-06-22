@@ -7,30 +7,55 @@ Books To Scrape
 A monitoring software that runs on demand via the terminal, used to extract book prices on an online book retailer named Books to Scrape.
 Web address: http://books.toscrape.com/index.html
 
-## 4. How to Install and Run the Project
+## 3. Before Installation
+Before you installing the application, ensure you have done the following
+1. Installed Python3 on your computer
+2. Installed pip - the python package manager 
+3. Installed the virtual environment using pip
 
-1. Ensure you have the python intepreter installed on your machine
-2. Download the project from Github, from the master branch to a directory on your computer. 
-   Github link : https://github.com/lnnsenga/bookstoscrape.git
-3. Change directory to bookstoscrape
-4. Checkout to the master branch  
-5. Open the project folder in your IDE .( Name of the folder is _bookstoscrape_.)
-4. Install the dependencies of the software by running the following code in your terminal
+## 4. How to Install and Run the Application
 
-```console
-pip3 install -r requirements.txt
-```
+1. Open the terminal in your IDE and move to your working directory
 
-5. Run the software using the following command
+2. Clone the application from Github to your working directory using the following command 
+   ```console
+      git clone https://github.com/lnnsenga/bookstoscrape.git
+   ```
+3. Using your terminal move from your working directory to the directory _bookstoscrape_ 
 
-```python
-python bookstoscrape.py
-```
+4. Create a virtual environment using the followig command 
+   ```console
+      virtualenv myenv
+   ```
+
+5. Activate the virtual environment using the following command
+   ```console
+      source myenv/bin/activate
+   ```
+
+6. Install dependencies of the project using the following command 
+   ```console
+      pip3 install -r requirements.txt
+   ```
+
+8. Run the application using this command 
+   ```console 
+      python3 scrape_category_page.py
+   ```
+
+
+## How The Application Works 
+The final goal of the application is collection information and images for all books in a category. 
+1. It starts by sending a request to the homepage of the site bookstoscrape 
+2. collects the links of to all category pages 
+
+
+
+
 
 **NOTE**
 
 This software has functions that can scrape books in 3 ways
-
 1. By extracting details for a single product from the website
 2. By extracting all the products on the homepage
 3. By extracting all the products on a category page

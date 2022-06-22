@@ -78,43 +78,34 @@ def scrape_single_product(url):
     return product_info
 
 
-# def scrape_single_product():
+def scrape_single_product_(url):
 
-#     page = request_page('http://books.toscrape.com/index.html')
+    product_page = request_page(url)
 
-#     soup = BeautifulSoup(page.content, 'html.parser')
+    product = BeautifulSoup(product_page.content, 'html.parser')
 
-#     all_products_urls = soup.find_all(class_='product_pod')
+    title = product.find('h1').get_text()
 
-#     product_page = request_page(
-#         f"http://books.toscrape.com/{ all_products_urls[0].find('a').get('href')}")
+    product_description = product.find(
+        id='product_description').find_next('p').get_text()
 
-#     product = BeautifulSoup(product_page.content, 'html.parser')
+    product_information = product.find_all('td')
 
-#     title = product.find('h1').get_text()
+    universal_product_code = product_information[0].get_text()
+    price_excluding_tax = product_information[2].get_text()
+    price_including_tax = product_information[3].get_text()
+    number_available = product_information[5].get_text()
 
-#     product_description = product.find(
-#         id='product_description').find_next('p').get_text()
+    product_info = pd.DataFrame(
+        {
+            'title': [title],
+            'universal_product_code': [universal_product_code],
+            'price_excluding_tax': [price_excluding_tax],
+            'price_including_tax': [price_including_tax],
+            'number_available': [number_available],
+            'product_description': [product_description],
+        }
+    )
 
-#     product_information = product.find_all('td')
 
-#     universal_product_code = product_information[0].get_text()
-#     price_excluding_tax = product_information[2].get_text()
-#     price_including_tax = product_information[3].get_text()
-#     number_available = product_information[5].get_text()
-
-#     product_info = pd.DataFrame(
-#         {
-#             'title': [title],
-#             'universal_product_code': [universal_product_code],
-#             'price_excluding_tax': [price_excluding_tax],
-#             'price_including_tax': [price_including_tax],
-#             'number_available': [number_available],
-#             'product_description': [product_description],
-#         }
-#     )
-
-#     # saves data to csv
-#     product_info.to_csv('csv_folder/single_product_info.csv')
-
-#     return
+    return product_info

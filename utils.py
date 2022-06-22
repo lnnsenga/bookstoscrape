@@ -13,10 +13,22 @@ def request_image(url):
 
 def save_to_csv(data, filename):
 
+    print(filename)
     product_info = pd.DataFrame(data=data)
 
     # saves data to csv
     if not os.path.exists("csv_folder"):
             os.mkdir("csv_folder")
     file_name = f"csv_folder/{filename.strip()}_category_products.csv"
+    product_info.to_csv(file_name)
+
+
+def save_book_to_csv(data, filename):
+
+    product_info = pd.DataFrame(data=data)
+
+    # saves data to csv
+    if not os.path.exists("csv_folder"):
+            os.mkdir("csv_folder")
+    file_name = f"csv_folder/{filename.strip()}_info.csv"
     product_info.to_csv(file_name)

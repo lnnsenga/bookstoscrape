@@ -2,7 +2,6 @@ import os
 import pandas as pd
 from scrape_single_product import scrape_single_product
 from utils import request_page
-from PIL import Image
 from bs4 import BeautifulSoup
 
 
