@@ -1,4 +1,5 @@
 import os
+from numpy import product
 import pandas as pd
 from scrape_single_product import scrape_single_product
 from utils import request_page
@@ -15,11 +16,8 @@ def scrape_all_products(url):
 
     # all_products_urls = soup.find_all(class_='product_pod')
 
-    all_pages_url = []
-    all_pages_url.append(
-        url
-    )
-
+    all_pages_url = [url]
+   
     pagination = soup.find(class_='next')
 
     while pagination:
@@ -47,7 +45,9 @@ def scrape_all_products(url):
         product_info = scrape_single_product(one_page_url)
 
         data.append(
-            product_info
+            [product_info]
         )
 
+    print(product_info, "PRODUCT INFO")
+  
     return data

@@ -1,6 +1,5 @@
-import os
 import pandas as pd
-from utils import request_page, request_image
+from utils import request_page,save_image
 from PIL import Image
 from bs4 import BeautifulSoup
 
@@ -39,21 +38,21 @@ def scrape_single_product(url):
         product = BeautifulSoup(product_page.content, 'html.parser')
 
         title = product.find('h1').get_text()
+        category_name = product.find(class_='breadcrumb').find_all('li')
+      
 
         if title.find("/"):
             title = title.replace("/", "-")
-        print(title)
+       
 
         image = product.find('img')
         image_url = image['src'].replace(
             "../../", "http://books.toscrape.com/")
 
-        img = Image.open(request_image(image_url))
-        if not os.path.exists("image_folder"):
-            os.mkdir("image_folder")
+        cname = category_name[2].get_text()
 
-        img.save(f"image_folder/{title}_book_image.jpg")
-        # print(title)
+        save_image(image_url,title,cname.strip())
+   
         product_description = product.find(
             id='product_description').find_next('p').get_text()
 

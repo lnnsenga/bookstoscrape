@@ -1,18 +1,16 @@
-import os
 import pandas as pd
 from scrape_single_product import scrape_single_product_
 from scrape_category_page import scrape_category_page_
+from scrape_all_categories_books import scrape_all_categories_books
 from utils import save_book_to_csv
 from PIL import Image
 from bs4 import BeautifulSoup
 
 
-
-
 menu_options = {
     1: 'For a single book',
     2: 'For all books in a single category',
-    3: 'For all books in all categories',
+    3: 'For all books in every category',
     4: 'Exit',
 }
 
@@ -29,10 +27,12 @@ def single_book():
 def one_category_books():
     category_page_url = input("Enter category page URL:")
     category_name = scrape_category_page_(category_page_url)
-    print('All books info from the {} category have been extracted!\n\n',category_name)
+    print(f'All books info from the {category_name} category have been extracted!\n\n')
 
 def all_categories_books():
-     print('Handle option \'Option 3\'\n\n')
+    scrape_all_categories_books()
+    print('All books info from the all categories have been extracted!\n\n')
+
 
 
 while(True):
