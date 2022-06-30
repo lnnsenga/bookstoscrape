@@ -61,7 +61,7 @@ Once you run the software, you will be presented with a menu that has 4 options:
 
 
 #### OPTION 3 - For all books in every category
-      Does not need any URL as  it will be extract for all books across all categories
+      Does not need any URL as it will be extracting information for all books across all categories
 
 
 #### OPTION 4 - Exit
