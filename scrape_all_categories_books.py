@@ -2,8 +2,7 @@ from scrape_category_page import scrape_category_page_
 from utils import request_page
 from bs4 import BeautifulSoup
 
-def scrape_all_categories_books():
-    
+def scrape_all_categories_books():    
     category_links = []
     one_page = request_page('http://books.toscrape.com/index.html')
 

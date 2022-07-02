@@ -14,7 +14,7 @@ def scrape_single_product(url):
 
     print(url)
     soup = BeautifulSoup(one_page.content, 'html.parser')
-
+  
     all_products = soup.find_all(class_='product_pod')
 
     for single_product in all_products:
@@ -34,6 +34,7 @@ def scrape_single_product(url):
 
         # gets the product page
         product_page = request_page(complete_url)
+        
 
         product = BeautifulSoup(product_page.content, 'html.parser')
 
@@ -49,10 +50,14 @@ def scrape_single_product(url):
         image_url = image['src'].replace(
             "../../", "http://books.toscrape.com/")
 
-        cname = category_name[2].get_text()
+        rating = product.find(class_='star-rating')
+        review_rating = rating['class']
+        review_rating.remove("star-rating")
+        review_rating= review_rating[0]
+      
 
-        save_image(image_url,title,cname.strip())
-   
+        cname = category_name[2].get_text() 
+        cname = cname.strip()
         product_description = product.find(
             id='product_description').find_next('p').get_text()
 
@@ -62,16 +67,23 @@ def scrape_single_product(url):
         price_excluding_tax = product_information[2].get_text()
         price_including_tax = product_information[3].get_text()
         number_available = product_information[5].get_text()
-
+        number_available = number_available[10:12]
+    
+        save_image(image_url,title,cname)
         data.append({
             'title': [title],
-            'universal_product_code': [universal_product_code],
-            'price_excluding_tax': [price_excluding_tax],
-            'price_including_tax': [price_including_tax],
-            'number_available': [number_available],
-            'product_description': [product_description],
+            'universal_prod_code': [universal_product_code],
+            'price_exc_tax': [price_excluding_tax],
+            'price_inc_tax': [price_including_tax],
+            'no_available': [number_available],
+            'image_url':[image_url],
+            'category':[cname],
+            'r_rating':[review_rating],
+            'prod_page_url':[complete_url],
+            'prod_description': [product_description],    
         })
 
+    pd.set_option('display.max_colwidth', 20)
     product_info = pd.DataFrame(data=data)
 
     return product_info
@@ -79,11 +91,29 @@ def scrape_single_product(url):
 
 def scrape_single_product_(url):
 
+  
     product_page = request_page(url)
-
+    product_page_url =url
+    data=[]
+    
     product = BeautifulSoup(product_page.content, 'html.parser')
 
     title = product.find('h1').get_text()
+
+    image = product.find('img')
+    image_url = image['src'].replace(
+            "../../", "http://books.toscrape.com/")
+
+    rating = product.find(class_='star-rating')
+    review_rating = rating['class']
+    review_rating.remove("star-rating")
+    review_rating= review_rating[0]
+      
+
+    category_name = product.find(class_='breadcrumb').find_all('li')
+    category_name = category_name[2].get_text() 
+    category_name = category_name.strip()
+      
 
     product_description = product.find(
         id='product_description').find_next('p').get_text()
@@ -94,17 +124,22 @@ def scrape_single_product_(url):
     price_excluding_tax = product_information[2].get_text()
     price_including_tax = product_information[3].get_text()
     number_available = product_information[5].get_text()
+    number_available = number_available[10:12]
 
-    product_info = pd.DataFrame(
-        {
+    data.append({
             'title': [title],
-            'universal_product_code': [universal_product_code],
-            'price_excluding_tax': [price_excluding_tax],
-            'price_including_tax': [price_including_tax],
-            'number_available': [number_available],
-            'product_description': [product_description],
-        }
-    )
+            'universal_prod_code': [universal_product_code],
+            'price_exc_tax': [price_excluding_tax],
+            'price_inc_tax': [price_including_tax],
+            'no_available': [number_available],
+            'image_url':[image_url],
+            'category':[category_name],
+            'r_rating':[review_rating],
+            'prod_page_url':[product_page_url],
+            'prod_description': [product_description],      
+    })
 
+    pd.set_option('display.max_colwidth', 20)
+    product_info = pd.DataFrame(data=data)
 
     return product_info

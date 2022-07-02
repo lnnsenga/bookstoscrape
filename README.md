@@ -1,17 +1,16 @@
 ## 1. Project's Title
 
-Books To Scrape
+      Books To Scrape
 
 ## 2. Project Description
 
-A monitoring software that runs on demand via the terminal, used to extract book prices on an online book retailer named Books to Scrape.
-Web address: http://books.toscrape.com/index.html
+      A monitoring software that runs on demand via the terminal, used to extract book prices on an online book retailer named Books to Scrape. Web address: http://books.toscrape.com/index.html
 
 ## 3. Before Installation
-Before you installing the application, ensure you have done the following
-1. Installed Python3 on your computer
-2. Installed pip - the python package manager 
-3. Installed the virtual environment using pip
+      Before you installing the application, ensure you have done the following
+      1. Installed Python3 on your computer
+      2. Installed pip - the python package manager 
+      3. Installed the virtual environment using pip
 
 ## 4. How to Install and Run the Application
 
@@ -43,7 +42,7 @@ Before you installing the application, ensure you have done the following
       python3 bookstoscrape.py
    ```
 
-## How The Application Works 
+## 4. How The Application Works 
 
 This software has functions that can scrape books in 3 ways
 1. By extracting details for a single product 
@@ -53,7 +52,8 @@ This software has functions that can scrape books in 3 ways
 Once you run the software, you will be presented with a menu that has 4 options:
 
 #### OPTION 1 - For a single book
-      Requires you to enter the URL of the book you need to extract information
+      Requires you to enter the URL of the book you need to extract information.
+      A file with the name "single_book_info.csv"  which will contain the details of the book will be created.
 
 
 ####  OPTION 2 - For all books in single category

@@ -33,8 +33,6 @@ def all_categories_books():
     scrape_all_categories_books()
     print('All books info from the all categories have been extracted!\n\n')
 
-
-
 while(True):
     print("What information do you want to extract ?")
     print_menu()
