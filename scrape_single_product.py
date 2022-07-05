@@ -12,7 +12,6 @@ def scrape_single_product(url):
     product_info = {}
     one_page = request_page(url)
 
-    print(url)
     soup = BeautifulSoup(one_page.content, 'html.parser')
   
     all_products = soup.find_all(class_='product_pod')
@@ -26,8 +25,6 @@ def scrape_single_product(url):
 
     # display all books
     for single_product_url in all_products_urls:
-
-        # print(single_product_url)
 
         complete_url = single_product_url.replace(
             "../../..", "http://books.toscrape.com/catalogue")

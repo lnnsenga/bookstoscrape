@@ -12,8 +12,7 @@ def scrape_category_page_(url):
     category_name = soup.find('h1').get_text()
 
     category_products = scrape_all_products(url)
-    print(category_products)
-
+ 
     save_to_csv(category_products, category_name)
 
     return category_name

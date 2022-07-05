@@ -40,14 +40,10 @@ def scrape_all_products(url):
    #obtaining products from every page in a single category
     for one_page_url in all_pages_url:
 
-        # print(one_page_url)
-
         product_info = scrape_single_product(one_page_url)
 
         data.append(
             [product_info]
         )
-
-    print(product_info, "PRODUCT INFO")
   
     return data
