@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from scrape_all_products import scrape_all_products
 
 
-def scrape_category_page_(url):
+def scrape_category_page(url):
 
     page = request_page(url)
 
@@ -12,8 +12,7 @@ def scrape_category_page_(url):
     category_name = soup.find('h1').get_text()
 
     category_products = scrape_all_products(url)
- 
+
     save_to_csv(category_products, category_name)
 
     return category_name
-

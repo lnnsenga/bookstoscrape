@@ -1,7 +1,7 @@
 import os
 from numpy import product
 import pandas as pd
-from scrape_single_product import scrape_single_product
+from scrape_single_category import scrape_single_category
 from utils import request_page
 from bs4 import BeautifulSoup
 
@@ -40,7 +40,7 @@ def scrape_all_products(url):
    #obtaining products from every page in a single category
     for one_page_url in all_pages_url:
 
-        product_info = scrape_single_product(one_page_url)
+        product_info = scrape_single_category(one_page_url)
 
         data.append(
             [product_info]
