@@ -42,7 +42,7 @@
       python3 bookstoscrape.py
    ```
 
-## 4. How The Application Works 
+## 5. How The Application Works 
 
 This software has functions that can scrape books in 3 ways
 1. By extracting details for a single product 
