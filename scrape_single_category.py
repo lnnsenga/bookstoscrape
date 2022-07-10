@@ -56,10 +56,17 @@ def scrape_single_category(url):
 
         cname = category_name[2].get_text() 
         cname = cname.strip()
-        product_description = product.find(
-            id='product_description').find_next('p').get_text()
 
+        product_description = product.find(
+            id='product_description')
+
+        try:
+            product_description = product_description.find_next('p').get_text()
+        except AttributeError as error:
+            product_description = '--'
+        
         product_information = product.find_all('td')
+
 
         universal_product_code = product_information[0].get_text()
         price_excluding_tax = product_information[2].get_text()
