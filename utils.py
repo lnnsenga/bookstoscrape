@@ -44,7 +44,12 @@ def save_book_to_csv(data, filename):
 def save_image(image_url,title,category_name):
 
     img = Image.open(request_image(image_url))
-    if not os.path.exists(f"image_folder/{category_name}"):
-        os.mkdir(f"image_folder/{category_name}")
+    if not os.path.exists(f"image_folder/{category_name}"):   
+        try:
+            os.mkdir(f"image_folder/{category_name}")
+        except FileNotFoundError as error:
+            os.mkdir("image_folder")
+            os.mkdir(f"image_folder/{category_name}")
+
 
     img.save(f"image_folder/{category_name}/{title}_book_image.jpg")
