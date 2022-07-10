@@ -28,8 +28,14 @@ def scrape_single_product(url):
     category_name = category_name.strip()
 
     product_description = product.find(
-        id='product_description').find_next('p').get_text()
+        id='product_description')
 
+    try:
+        product_description.find_next('p').get_text()
+    except AttributeError as error:
+         product_description = '--'
+
+    
     product_information = product.find_all('td')
 
     universal_product_code = product_information[0].get_text()
