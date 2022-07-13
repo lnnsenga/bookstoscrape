@@ -53,7 +53,7 @@ Once you run the software, you will be presented with a menu that has 4 options:
 
 #### OPTION 1 - For a single book
       Requires you to enter the URL of the book you need to extract information.
-      A file with the name "single_book_info.csv"  which will contain the details of the book will be created.
+      A file that begins with the name "single_book_info.csv"  and ends with the book title  will  be created.  It will contain all details of the book.
 
 
 ####  OPTION 2 - For all books in single category
