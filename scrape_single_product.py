@@ -1,6 +1,4 @@
-import pandas as pd
 from utils import request_page
-from PIL import Image
 from bs4 import BeautifulSoup
 
 
@@ -31,7 +29,7 @@ def scrape_single_product(url):
         id='product_description')
 
     try:
-        product_description.find_next('p').get_text()
+        product_description = product_description.find_next('p').get_text()
     except AttributeError as error:
          product_description = '--'
 
@@ -45,7 +43,7 @@ def scrape_single_product(url):
     number_available = number_available[10:12]
 
     data.append({
-        'title':  str(title),
+        'title': str(title),
         'universal_prod_code': str(universal_product_code),
         'price_exc_tax': str(price_excluding_tax),
         'price_inc_tax': str(price_including_tax),
@@ -57,7 +55,5 @@ def scrape_single_product(url):
         'prod_description': str(product_description),
     })
 
-    pd.set_option('display.max_colwidth', 20)
-    product_info = pd.DataFrame(data=data)
-
-    return product_info
+     
+    return data
