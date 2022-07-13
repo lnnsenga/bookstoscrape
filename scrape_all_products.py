@@ -8,8 +8,6 @@ from bs4 import BeautifulSoup
 
 def scrape_all_products(url):
 
-    data = []
-
     category_page = request_page(url)
 
     soup = BeautifulSoup(category_page.content, 'html.parser')
@@ -42,8 +40,4 @@ def scrape_all_products(url):
 
         product_info = scrape_single_category(one_page_url)
 
-        data.append(
-            [product_info]
-        )
-  
-    return data
+    return product_info
