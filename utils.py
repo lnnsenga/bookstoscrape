@@ -35,7 +35,7 @@ def save_book_to_csv(data, filename):
     # saves data to csv
     if not os.path.exists("csv_folder"):
             os.mkdir("csv_folder")
-    file_name = f"csv_folder/{filename.strip()}_info.csv"
+    file_name = f"csv_folder/{filename.strip()}.csv"
     product_info.to_csv(file_name, index=False)
 
 
