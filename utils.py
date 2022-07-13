@@ -18,8 +18,6 @@ def request_image(url):
         print(e)
 
 def save_to_csv(data, filename):
-    print(filename)
-    pd.set_option('display.max_colwidth', 20)
     product_info = pd.DataFrame(data=data)
     f_name = filename.strip()
 
