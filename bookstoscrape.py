@@ -13,7 +13,6 @@ menu_options = {
     4: 'Exit',
 }
 
-
 def print_menu():
     for key in menu_options.keys():
         print(key, '--', menu_options[key])
@@ -24,7 +23,7 @@ def single_book():
     if (validators.url(book_url)):
         book_info = scrape_single_product(book_url)
         book = book_info[0]  
-        save_book_to_csv(book_info, f"single_book_{book['title']}")
+        save_book_to_csv(book_info, f"single_book_info_{book['title']}")
         print('Book info has been saved!\n\n')
     else:
         print('Wrong URL format, please try again!\n\n')
